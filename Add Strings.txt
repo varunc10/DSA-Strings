@@ -1,0 +1,52 @@
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        int i=num1.size()-1;
+        int j=num2.size()-1;
+        int carry=0;
+        int ans=0;
+        string newnum="";
+        while(i>=0&&j>=0){
+            ans=(num1[i]-'0'+num2[j]-'0'+carry);
+            if(ans>=10){
+                carry=ans/10;
+                ans=ans%10;
+            }
+            else{
+                carry=0;
+            }
+            newnum+=char(ans+'0');
+            i--;
+            j--;
+        }
+        while(i>=0){
+            ans=(num1[i]-'0'+carry);
+            if(ans>=10){
+                carry=ans/10;
+                ans=ans%10;
+            }
+            else{
+                carry=0;
+            }
+            newnum+=char(ans+'0');
+            i--;
+        }
+        while(j>=0){
+            ans=(num2[j]-'0'+carry);
+            if(ans>=10){
+                carry=ans/10;
+                ans=ans%10;
+            }
+            else{
+                carry=0;
+            }
+            newnum+=char(ans+'0');
+            j--;
+        }
+        if(carry!=0){
+            newnum+=char(carry+'0');
+        }
+        reverse(newnum.begin(),newnum.end());
+        return newnum;
+    }
+};
