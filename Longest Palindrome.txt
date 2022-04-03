@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        vector<int> count(128,0);
+        for(auto i:s)
+            count[i]++;
+        int ans = 0;
+        for (int j: count) {
+            ans += j / 2 * 2;
+            if (ans % 2 == 0 && j % 2 == 1)
+                ans++;
+        }
+        return ans;
+    }
+};
