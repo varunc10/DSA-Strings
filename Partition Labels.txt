@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> partitionLabels(string s) {
+        vector<int> v(26,0);
+        vector<int> ans;
+        for(int i=0;i<s.size();i++){
+            v[s[i]-'a']=i;
+        }
+        int len=0;
+        int j=0;
+        for(int i=0;i<s.size();i++){
+            j=max(j,v[s[i]-'a']);
+            if(i==j){
+                ans.push_back(j-len+1);
+                len=i+1;
+            }
+        }
+        return ans;
+    }
+};
