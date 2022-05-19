@@ -1,0 +1,15 @@
+string Solution::solve(string A, int B) {
+    string s="";
+    int count=1;
+    for(int i=0;i<A.size();i++){
+        while(count<B&&A[i]==A[i+1]&&i+1<A.size()){
+            count++;
+            i++;
+        }
+        if(count<B){
+            s+=A[i];
+        }
+        count=1;
+    }
+    return s;
+}
