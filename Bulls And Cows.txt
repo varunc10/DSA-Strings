@@ -1,0 +1,32 @@
+string Solution::solve(string A, string B) {
+    unordered_map<char,int> m;
+    for(auto i:A){
+        m[i]++;
+    }
+    int count1=0,count2=0;
+    for(int i=0;i<B.size();i++){
+        if(A[i]==B[i]){
+            m[A[i]]--;
+            if(m[A[i]]==0){
+                m.erase(A[i]);
+            }
+            count1++;
+        }
+    }
+    for(int i=0;i<A.size();i++){
+        if(A[i]!=B[i]){
+            if(m.find(B[i])!=m.end()){
+                m[B[i]]--;
+                if(m[B[i]]==0){
+                    m.erase(B[i]);
+                }
+                count2++;
+            }
+        }
+    }
+    string ans="";
+    ans+=to_string(count1);
+    ans+="A";
+    ans+=to_string(count2);
+    ans+="B";
+    return ans;
