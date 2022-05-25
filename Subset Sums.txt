@@ -1,0 +1,26 @@
+public:
+    void subset(vector<int> arr,vector<int>& sub,vector<vector<int>>& res,int index){
+        res.push_back(sub);
+        for(int i=index;i<arr.size();i++){
+            sub.push_back(arr[i]);
+            subset(arr,sub,res,i+1);
+            sub.pop_back();
+        }
+        return;
+    }
+    vector<int> subsetSums(vector<int> arr, int N)
+    {
+        vector<int> ans;
+        vector<int> sub;
+        vector<vector<int>> res;
+        subset(arr,sub,res,0);
+        int max=0;
+        for(int i=0;i<res.size();i++){
+            int sum=0;
+            for(int j=0;j<res[i].size();j++){
+                sum+=res[i][j];
+            }
+            ans.push_back(sum);
+        }
+        return ans;
+    }
