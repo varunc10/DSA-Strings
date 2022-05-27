@@ -1,0 +1,14 @@
+int Solution::lengthOfLastWord(const string A) {
+    int i=A.size()-1,count=0;
+    while(i>=0){
+        if(A[i]>=97&&A[i]<=122||A[i]>=65&&A[i]<=90){
+            while(A[i]>=97&&A[i]<=122||A[i]>=65&&A[i]<=90){
+                i--;
+                count++;
+            }
+            break;
+        }
+        i--;
+    }
+    return count;
+}
