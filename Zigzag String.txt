@@ -1,0 +1,23 @@
+string Solution::convert(string A, int B) {
+    int i=0;
+    vector<string> v(B,"");
+    while(i<A.size()){
+        int j=0;
+        while(j<B&&i<A.size()){
+            v[j]+=A[i];
+            i++;
+            j++;
+        }
+        j=B-2;
+        while(j>=1&&i<A.size()){
+            v[j]+=A[i];
+            i++;
+            j--;
+        }
+    }
+    string ans="";
+    for(auto i:v){
+        ans+=i;
+    }
+    return ans;
+}
