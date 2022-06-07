@@ -1,0 +1,14 @@
+int Solution::solve(string A) {
+    int m=1000000007;
+    long long i=0,j=0;
+    for(int k=0;k<A.size();k++){
+        if(A[k]=='a'||A[k]=='e'||A[k]=='i'||A[k]=='o'||A[k]=='u'){
+            i++;
+        }
+        else{
+            j++;
+        }
+    }
+    long long ans=(i*j)%m;
+    return ans;
+}
