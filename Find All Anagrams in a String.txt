@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        vector<int> v;
+        vector<int> freqs(26,0);
+        vector<int> freqp(26,0);
+        if(p.size()>s.size()){
+            return {};
+        }
+        for(int i=0;i<p.size();i++){
+            freqs[s[i]-'a']++;
+            freqp[p[i]-'a']++;
+        }
+        if(freqs==freqp){
+            v.push_back(0);
+        }
+        int j=p.size();
+        for(int i=j;i<s.size();i++){
+            freqs[s[i-j]-'a']--;
+            freqs[s[i]-'a']++;
+            if(freqs==freqp){
+                v.push_back(i-j+1);
+            }
+        }
+        return v;
+    }
+};
